@@ -25,7 +25,7 @@ function partition(array, s, e, animation) {
     animation.push(["comparison2", i, e]);                       //Comparing them again to turn them into secondary color
     if (array[i] <= pivot) {
       animation.push(["comparison1", i, pindex]);                                                
-      animation.push(["swap", i, array[pindex]]);
+      animation.push(["swap", i, array[pindex]]);                   
       animation.push(["swap", pindex, array[i]]);
       animation.push(["comparison2", i, pindex]);
       [array[i], array[pindex]] = [array[pindex], array[i]];
