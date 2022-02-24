@@ -1,0 +1,17 @@
+.array-container {
+  position: relative;
+  left: 0px;
+  right: 0px;
+  margin-top: 10px;
+}
+
+.array-bar {
+  background-color: rgb(135, 222, 179);
+  width: 5px;
+  display: inline-block;
+  margin: 0.5px;
+}
+
+.buttons {
+  position: center;
+}
