@@ -25,31 +25,30 @@ function merge(array, startindex, mid, endindex, animation) {
   while (l <= mid && r <= endindex) {                           
     animation.push([l, r]);                                       //Comparing value at ith and jth index so push them to change their color
     animation.push([l, r]);         //By changing color we imply that we are comparing those two values and then again we should revert back to other color, so push them again
-    if (array[l] <= array[r]) {                      //if condition satisfies,    
-      animation.push([k, array[l]]);                //pushing value of arr[l] into kth index
-      mainArray[k] = array[l];                     //overwrite value of arr[l] to mainarray[k].
+    if (array[l] <= array[r]) {                      //if condition satisfies,                                                   
+      animation.push([k, array[l]]);               // We overwrite the value at index k in the new array with the                                      
+      mainArray[k] = array[l];                    // value at index l in the original array.
       k++;
       l++;
     } else {
-      animation.push([k, array[r]]);               
-      animation.push([k, array[l]]);           
-      mainArray[k] = array[l];                 
-      mainArray[k] = array[r];
+      else {
+      animation.push([k, array[r]]);             // We overwrite the value at index k in the new array with the                
+      mainArray[k] = array[r];                   // value at index r in the original array.
       k++;
       r++;
     }
   }
   while (l <= mid) {
-    animation.push([l, l]);
-    animation.push([l, l]);
+    animation.push([l, l]);                         //We are comparing thses two values and changing their color
+    animation.push([l, l]);                         //comparing again and revert them to seconday color
     animation.push([k, array[l]]);
     mainArray[k] = array[l];
     k++;
     l++;
   }
   while (r <= endindex) {
-    animation.push([r, r]);
-    animation.push([r, r]);
+    animation.push([r, r]);                           //We are comparing thses two values and changing their color               
+    animation.push([r, r]);                          //comparing again and revert them to seconday color
     animation.push([k, array[r]]);
     mainArray[k] = array[r];
     k++;
