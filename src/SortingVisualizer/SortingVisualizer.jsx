@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./SortingVisualizer.css";
-import { mergesort } from "../SortingAlgorithms/mergesort.js";
+import "./SortingVisualizer.css";                                
+import { mergesort } from "../SortingAlgorithms/mergesort.js";        //importing mergesort and quicksort
 import { quicksort } from "../SortingAlgorithms/quicksort.js";
 
 class SortingVisualizer extends Component {
@@ -14,21 +14,20 @@ class SortingVisualizer extends Component {
     this.resetArray();
   }
 
-  resetArray() {
-    const array = [];
+  resetArray() {                                     //function to generate random array of 200 elements
+    const array = [];                 
     for (let i = 0; i < 200; i++) {
-      array.push(randomIntFromInterval(5, 550));
-    }
+      array.push(randomIntFromInterval(5, 550));     //function to invoke random array of elements ranging from 5 to 500           
+    }                                                //minimum value of 5 is chosen to make thr array bar visibily possible
     this.setState({ array });
-    this.setState({ backgroundColor: "red" });
     console.log(array);
   }
 
   mergesort() {
-    const animations = mergesort(this.state.array);
+    const animations = mergesort(this.state.array);                    //calling array uopn which mergesort is applied
     for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName("array-bar");
-      const isColorChange = i % 3 !== 2;
+      const arrayBars = document.getElementsByClassName("array-bar");     //call to array-bar for animation
+      const isColorChange = i % 3 !== 2;                
       if (isColorChange) {
         const [barOneIdx, barTwoIdx] = animations[i];
         const barOneStyle = arrayBars[barOneIdx].style;
@@ -37,7 +36,7 @@ class SortingVisualizer extends Component {
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-        }, i * 10);
+        }, i * 10);                                               //here, 10 refers to the speed of animations
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
@@ -90,12 +89,12 @@ class SortingVisualizer extends Component {
           <div
             className="array-bar"
             key={index}
-            style={{ height: `${value}px` }}
+            style={{ height: `${value}px` }}                 //to display array bars height is quoted and used pixels value 
           ></div>
         ))}
         <br />
         <div class="buttons">
-          <button onClick={() => this.resetArray()}>Generate New Array</button>
+          <button onClick={() => this.resetArray()}>Generate New Array</button>       
           <button onClick={() => this.mergesort()}>Merge Sort</button>
           <button onClick={() => this.quicksort()}>Quick Sort</button>
         </div>
