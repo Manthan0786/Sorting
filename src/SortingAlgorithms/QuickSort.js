@@ -22,7 +22,7 @@ function partition(array, s, e, animation) {
   var pindex = s;                                        
   for (let i = s; i < e; i++) {
     animation.push(["comparison1", i, e]);                       //Comparing value at i and e so push them to change their color
-    animation.push(["comparison2", i, e]);                       //to turn them into secondary color
+    animation.push(["comparison2", i, e]);                       //Comparing them again to turn them into secondary color
     if (array[i] <= pivot) {
       animation.push(["comparison1", i, pindex]);                
       animation.push(["swap", i, array[pindex]]);
