@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import "./SortingVisualizer.css";                                
-import { mergesort } from "../SortingAlgorithms/mergesort.js";        //importing mergesort and quicksort
-import { quicksort } from "../SortingAlgorithms/quicksort.js";
+import "./SortingVisualizer.css";
+import Mergesort from "../SortingAlgorithms/MergeSort"; //importing mergesort and quicksort
+import Quicksort from "../SortingAlgorithms/QuickSort";
 
 class SortingVisualizer extends Component {
   constructor(props) {
     super(props);
-
     this.state = { array: [] };
   }
 
@@ -14,20 +13,20 @@ class SortingVisualizer extends Component {
     this.resetArray();
   }
 
-  resetArray() {                                     //function to generate random array of 200 elements
-    const array = [];                 
-    for (let i = 0; i < 200; i++) {
-      array.push(randomIntFromInterval(5, 550));     //function to invoke random array of elements ranging from 5 to 500           
-    }                                                //minimum value of 5 is chosen to make thr array bar visibily possible
+  resetArray() {
+    //function to generate random array of 200 elements
+    const array = [];
+    for (let i = 0; i < 100; i++) {
+      array.push(randomIntFromInterval(5, 500)); //function to invoke random array of elements ranging from 5 to 500
+    } //minimum value of 5 is chosen to make thr array bar visibily possible
     this.setState({ array });
-    console.log(array);
   }
 
-  mergesort() {
-    const animations = mergesort(this.state.array);                    //calling array uopn which mergesort is applied
+  Mergesort() {
+    const animations = Mergesort(this.state.array); //calling array uopn which mergesort is applied
     for (let i = 0; i < animations.length; i++) {
-      const arrayBars = document.getElementsByClassName("array-bar");     //call to array-bar for animation
-      const isColorChange = i % 3 !== 2;                
+      const arrayBars = document.getElementsByClassName("array-bar"); //call to array-bar for animation
+      const isColorChange = i % 3 !== 2;
       if (isColorChange) {
         const [barOneIdx, barTwoIdx] = animations[i];
         const barOneStyle = arrayBars[barOneIdx].style;
@@ -36,7 +35,7 @@ class SortingVisualizer extends Component {
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
-        }, i * 10);                                               //here, 10 refers to the speed of animations
+        }, i * 10); //here, 10 refers to the speed of animations
       } else {
         setTimeout(() => {
           const [barOneIdx, newHeight] = animations[i];
@@ -47,8 +46,8 @@ class SortingVisualizer extends Component {
     }
   }
 
-  quicksort() {
-    const animation = quicksort(this.state.array);
+  Quicksort() {
+    const animation = Quicksort(this.state.array);
     for (let i = 0; i < animation.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar");
       const isColorChange =
@@ -89,14 +88,14 @@ class SortingVisualizer extends Component {
           <div
             className="array-bar"
             key={index}
-            style={{ height: `${value}px` }}                 //to display array bars height is quoted and used pixels value 
+            style={{ height: `${value}px` }} //to display array bars height is quoted and used pixels value
           ></div>
         ))}
         <br />
         <div class="buttons">
-          <button onClick={() => this.resetArray()}>Generate New Array</button>       
-          <button onClick={() => this.mergesort()}>Merge Sort</button>
-          <button onClick={() => this.quicksort()}>Quick Sort</button>
+          <button onClick={() => this.resetArray()}>Generate New Array</button>
+          <button onClick={() => this.Mergesort()}>Merge Sort</button>
+          <button onClick={() => this.Quicksort()}>Quick Sort</button>
         </div>
       </div>
     );

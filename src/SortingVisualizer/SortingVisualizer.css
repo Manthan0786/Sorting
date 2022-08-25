@@ -6,12 +6,12 @@
 }
 
 .array-bar {
-  background-color: rgb(135, 222, 179);     /*gives color to array bars*/
-  width: 2px;                               /* defines width of each bar*/
-  display: inline-block;                    /* arranges the array bars in horizontal way*/
-  margin: 7px;                           
+  background-color: rgb(135, 222, 179); /*gives color to array bars*/
+  width: 7px; /* defines width of each bar*/
+  display: inline-block; /* arranges the array bars in horizontal way*/
+  margin: 2px;
 }
 
 .buttons {
-  position: center;                        /* put buttons in centre*/
+  position: center; /* put buttons in centre*/
 }
