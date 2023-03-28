@@ -4,6 +4,11 @@
   right: 0px;
   margin-top: 10px;
 }
+.grid {
+  display: flex;
+  justify-content: center; /* centers the child divs horizontally */
+  align-items: center;
+}
 
 .array-bar {
   background-color: rgb(135, 222, 179); /*gives color to array bars*/
@@ -13,5 +18,8 @@
 }
 
 .buttons {
-  position: center; /* put buttons in centre*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }

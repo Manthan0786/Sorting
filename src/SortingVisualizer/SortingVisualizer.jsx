@@ -83,19 +83,21 @@ class SortingVisualizer extends Component {
   render() {
     const { array } = this.state;
     return (
-      <div class="array-container">
-        {array.map((value, index) => (
-          <div
-            className="array-bar"
-            key={index}
-            style={{ height: `${value}px` }} //to display array bars height is quoted and used pixels value
-          ></div>
-        ))}
-        <br />
-        <div class="buttons">
-          <button onClick={() => this.resetArray()}>Generate New Array</button>
-          <button onClick={() => this.Mergesort()}>Merge Sort</button>
-          <button onClick={() => this.Quicksort()}>Quick Sort</button>
+      <div className="grid">
+        <div class="array-container">
+          {array.map((value, index) => (
+            <div
+              className="array-bar"
+              key={index}
+              style={{ height: `${value}px` }} //to display array bars height is quoted and used pixels value
+            ></div>
+          ))}
+          <br />
+          <div class="buttons">
+            <button onClick={() => this.resetArray()}>Generate New Array</button>
+            <button onClick={() => this.Mergesort()}>Merge Sort</button>
+            <button onClick={() => this.Quicksort()}>Quick Sort</button>
+          </div>
         </div>
       </div>
     );
