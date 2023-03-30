@@ -21,6 +21,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "homepage": "https://manthan0786.github.io/Sorting-Visualizer/",
   "browserslist": [
     ">0.2%",
     "not dead",
