@@ -6,7 +6,8 @@ import Quicksort from "../SortingAlgorithms/QuickSort";
 class SortingVisualizer extends Component {
   constructor(props) {
     super(props);
-    this.state = { array: [] };
+    this.state = { array: [], col : "array-bar" };
+    this.resetArray = this.resetArray.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +20,7 @@ class SortingVisualizer extends Component {
     for (let i = 0; i < 100; i++) {
       array.push(randomIntFromInterval(5, 500)); //function to invoke random array of elements ranging from 5 to 500
     } //minimum value of 5 is chosen to make thr array bar visibily possible
-    this.setState({ array });
+    this.setState({ array , col:"array-bar"});
   }
 
   Mergesort() {
@@ -81,13 +82,13 @@ class SortingVisualizer extends Component {
   }
 
   render() {
-    const { array } = this.state;
+    const { array, col } = this.state;
     return (
       <div className="grid">
         <div class="array-container">
           {array.map((value, index) => (
             <div
-              className="array-bar"
+              className={col}
               key={index}
               style={{ height: `${value}px` }} //to display array bars height is quoted and used pixels value
             ></div>
