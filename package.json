@@ -2,6 +2,7 @@
   "name": "sortingvisualizer",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://manthan0786.github.io/Sorting-Visualizer/",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
@@ -11,6 +12,7 @@
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",
+    "gh-pages": "^5.0.0",
     "typescript": "4.1.3"
   },
   "scripts": {
@@ -21,7 +23,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://manthan0786.github.io/Sorting-Visualizer/",
   "browserslist": [
     ">0.2%",
     "not dead",
