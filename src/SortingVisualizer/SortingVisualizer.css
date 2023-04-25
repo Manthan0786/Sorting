@@ -4,16 +4,22 @@
   right: 0px;
   margin-top: 10px;
 }
+
 .grid {
   display: flex;
-  justify-content: center; /* centers the child divs horizontally */
+  justify-content: center;
+  /* centers the child divs horizontally */
   align-items: center;
+  background-color: rgb(33, 31, 31);
 }
 
 .array-bar {
-  background-color: rgb(135, 222, 179); /*gives color to array bars*/
-  width: 7px; /* defines width of each bar*/
-  display: inline-block; /* arranges the array bars in horizontal way*/
+  background-color: rgb(135, 222, 179);
+  /*gives color to array bars*/
+  width: 7px;
+  /* defines width of each bar*/
+  display: inline-block;
+  /* arranges the array bars in horizontal way*/
   margin: 2px;
 }
 
@@ -22,4 +28,20 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  margin-bottom: 5px;
+}
+
+.button {
+  background-color: #555;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 10px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  background-color: #666; 
+  transform: scale(1.1);
 }

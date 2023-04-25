@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./SortingVisualizer.css";
-import Mergesort from "../SortingAlgorithms/MergeSort"; //importing mergesort and quicksort
+import Mergesort from "../SortingAlgorithms/MergeSort";
 import Quicksort from "../SortingAlgorithms/QuickSort";
 
 class SortingVisualizer extends Component {
   constructor(props) {
     super(props);
-    this.state = { array: [], col : "array-bar" };
+    this.state = { array: [], col : "array-bar", button1Disabled: false, button2Disabled: false, button3Disabled: false };
     this.resetArray = this.resetArray.bind(this);
   }
 
@@ -24,6 +24,8 @@ class SortingVisualizer extends Component {
   }
 
   Mergesort() {
+    this.setState({ button1Disabled: true });
+    this.setState({ button2Disabled: true });
     const animations = Mergesort(this.state.array); //calling array uopn which mergesort is applied
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar"); //call to array-bar for animation
@@ -45,9 +47,12 @@ class SortingVisualizer extends Component {
         }, i * 10);
       }
     }
+    
   }
 
   Quicksort() {
+    this.setState({ button1Disabled: true });
+    this.setState({ button3Disabled: true });
     const animation = Quicksort(this.state.array);
     for (let i = 0; i < animation.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar");
@@ -85,7 +90,13 @@ class SortingVisualizer extends Component {
     const { array, col } = this.state;
     return (
       <div className="grid">
+        
         <div class="array-container">
+        <div class="buttons">
+            <button onClick={() => this.resetArray()} disabled={this.state.button1Disabled} className="button">Generate New Array</button>
+            <button onClick={() => this.Mergesort()} disabled={this.state.button2Disabled} className="button">Merge Sort</button>
+            <button onClick={() => this.Quicksort()} disabled={this.state.button3Disabled} className="button">Quick Sort</button>
+          </div>
           {array.map((value, index) => (
             <div
               className={col}
@@ -94,11 +105,7 @@ class SortingVisualizer extends Component {
             ></div>
           ))}
           <br />
-          <div class="buttons">
-            <button onClick={() => this.resetArray()}>Generate New Array</button>
-            <button onClick={() => this.Mergesort()}>Merge Sort</button>
-            <button onClick={() => this.Quicksort()}>Quick Sort</button>
-          </div>
+          
         </div>
       </div>
     );
