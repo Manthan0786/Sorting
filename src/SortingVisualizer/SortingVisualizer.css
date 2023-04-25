@@ -23,6 +23,21 @@
   margin: 2px;
 }
 
+.array-bar-container {
+  position: relative;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.height {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
 .buttons {
   display: flex;
   align-items: center;
@@ -44,4 +59,14 @@
 .button:hover {
   background-color: #666; 
   transform: scale(1.1);
+}
+
+.slidecontainer {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.slidecontainer p {
+  color: white;
 }

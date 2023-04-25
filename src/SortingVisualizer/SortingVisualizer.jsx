@@ -6,27 +6,28 @@ import Quicksort from "../SortingAlgorithms/QuickSort";
 class SortingVisualizer extends Component {
   constructor(props) {
     super(props);
-    this.state = { array: [], col : "array-bar", button1Disabled: false, button2Disabled: false, button3Disabled: false };
+    this.state = { array: [], col: "array-bar", maxValue: 500 };
     this.resetArray = this.resetArray.bind(this);
+    this.handleMaxValueChange = this.handleMaxValueChange.bind(this);
+    console.log(this.state.maxValue)
   }
-
+  
   componentDidMount() {
     this.resetArray();
   }
+  
 
   resetArray() {
     //function to generate random array of 200 elements
     const array = [];
-    for (let i = 0; i < 100; i++) {
-      array.push(randomIntFromInterval(5, 500)); //function to invoke random array of elements ranging from 5 to 500
+    for (let i = 0; i < 85; i++) {
+      array.push(randomIntFromInterval(5, this.state.maxValue)); //function to invoke random array of elements ranging from 5 to 500
     } //minimum value of 5 is chosen to make thr array bar visibily possible
-    this.setState({ array , col:"array-bar"});
+    this.setState({ array, col: "array-bar" });
   }
 
   Mergesort() {
-    this.setState({ button1Disabled: true });
-    this.setState({ button2Disabled: true });
-    const animations = Mergesort(this.state.array); //calling array uopn which mergesort is applied
+    const animations = Mergesort(this.state.array);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar"); //call to array-bar for animation
       const isColorChange = i % 3 !== 2;
@@ -47,12 +48,9 @@ class SortingVisualizer extends Component {
         }, i * 10);
       }
     }
-    
   }
 
   Quicksort() {
-    this.setState({ button1Disabled: true });
-    this.setState({ button3Disabled: true });
     const animation = Quicksort(this.state.array);
     for (let i = 0; i < animation.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar");
@@ -86,26 +84,36 @@ class SortingVisualizer extends Component {
     }
   }
 
+  handleMaxValueChange(event) {
+    this.setState({ maxValue: event.target.value })
+    console.log(this.state.maxValue);    
+  }
+
   render() {
-    const { array, col } = this.state;
+    const { array, col, maxValue } = this.state;
     return (
       <div className="grid">
-        
         <div class="array-container">
-        <div class="buttons">
-            <button onClick={() => this.resetArray()} disabled={this.state.button1Disabled} className="button">Generate New Array</button>
-            <button onClick={() => this.Mergesort()} disabled={this.state.button2Disabled} className="button">Merge Sort</button>
-            <button onClick={() => this.Quicksort()} disabled={this.state.button3Disabled} className="button">Quick Sort</button>
-          </div>
-          {array.map((value, index) => (
-            <div
-              className={col}
-              key={index}
-              style={{ height: `${value}px` }} //to display array bars height is quoted and used pixels value
-            ></div>
-          ))}
-          <br />
           
+          <div class="buttons">
+          <div class="slidecontainer">
+            <p>Set height: </p>
+            <input type="range" min="1" max="500" value={maxValue} class="slider" id="myRange" onChange={this.handleMaxValueChange} />
+          </div>
+            <button onClick={() => this.resetArray()} className="button">Generate New Array</button>
+            <button onClick={() => this.Mergesort()} className="button">Merge Sort</button>
+            <button onClick={() => this.Quicksort()} className="button">Quick Sort</button>
+          </div>
+          <br />
+          {array.map((value, index) => (
+            <div className="array-bar-container">
+              <div
+                className={col}
+                key={index}
+                style={{ height: `${value}px` }} //to display array bars height is quoted and used pixels value
+              />
+            </div>
+          ))}
         </div>
       </div>
     );
