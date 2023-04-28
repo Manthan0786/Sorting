@@ -97,7 +97,7 @@ class SortingVisualizer extends Component {
           
           <div class="buttons">
           <div class="slidecontainer">
-            <p>Set height: </p>
+            <p>Set max height: </p>
             <input type="range" min="1" max="500" value={maxValue} class="slider" id="myRange" onChange={this.handleMaxValueChange} />
           </div>
             <button onClick={() => this.resetArray()} className="button">Generate New Array</button>
