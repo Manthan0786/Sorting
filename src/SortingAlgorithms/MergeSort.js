@@ -5,7 +5,7 @@ export default function Mergesort(array) {
     return array;
   }
   mergesortHelper(array, 0, array.length - 1, animation);
-  return animation; //returning animations for visualization
+  return animation; 
 }
 
 function mergesortHelper(array, startindex, endindex, animation) {
