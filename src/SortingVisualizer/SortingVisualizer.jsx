@@ -26,8 +26,8 @@ class SortingVisualizer extends Component {
     this.setState({ array, col: "array-bar" });
   }
 
-  Mergesortfun() {
-    const animations = Mergesort(this.state.array);
+  async Mergesortfun() {
+    const animations = await Mergesort(this.state.array);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar"); //call to array-bar for animation
       const isColorChange = i % 3 !== 2;
@@ -83,8 +83,8 @@ class SortingVisualizer extends Component {
       }
     }
   }
-
-  handleMaxValueChange(event) {
+  
+  handleMaxValueChange() {
     this.setState({ maxValue: event.target.value })
     console.log(this.state.maxValue);
   }
